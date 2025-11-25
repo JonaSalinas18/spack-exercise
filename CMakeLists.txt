@@ -13,7 +13,7 @@ project("spackexample" VERSION 0.1.0)
 #   REQUIRED
 #   )
 
-add_library(spackexamplelib filesystem/filesystem.cpp flatset/flatset.cpp yamlParser/yamlParser.cpp)
+# add_library(spackexamplelib filesystem/filesystem.cpp flatset/flatset.cpp yamlParser/yamlParser.cpp)
 
 # set_target_properties(spackexamplelib
 #   PROPERTIES
@@ -27,7 +27,7 @@ add_library(spackexamplelib filesystem/filesystem.cpp flatset/flatset.cpp yamlPa
 add_executable(spackexample main.cpp)
 
 # target_link_libraries(spackexample spackexamplelib)
-# target_link_libraries(spackexamplelib Boost::filesystem yaml-cpp)
+# target_link_libraries(spackexamplelib Boost::filesystem ${YAML_CPP_LIBRARIES})
 
 # target_include_directories(spackexamplelib
 #     PRIVATE
@@ -39,7 +39,8 @@ add_executable(spackexample main.cpp)
 
 # Create install targets
 include(GNUInstallDirs)
-install(TARGETS spackexample spackexamplelib
+install(TARGETS spackexample
+# install(TARGETS spackexample spackexamplelib
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
